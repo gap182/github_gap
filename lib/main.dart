@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:github_gap/generated/l10n.dart';
 import 'package:github_gap/src/core/router/app_router.dart';
 import 'package:github_gap/src/core/theme/theme.dart';
 
@@ -18,6 +20,13 @@ class MyApp extends StatelessWidget {
         routeInformationParser: router.routeInformationParser,
         routerDelegate: router.routerDelegate,
         theme: materialTheme,
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
       ),
     );
   }
