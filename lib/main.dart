@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:github_gap/src/core/router/app_router.dart';
 import 'package:github_gap/src/core/theme/theme.dart';
 
@@ -9,12 +10,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'GithubGAP',
-      routeInformationParser: router.routeInformationParser,
-      routerDelegate: router.routerDelegate,
-      theme: materialTheme,
+    return ScreenUtilInit(
+      designSize: const Size(828, 1792),
+      builder: (context, child) => MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'GithubGAP',
+        routeInformationParser: router.routeInformationParser,
+        routerDelegate: router.routerDelegate,
+        theme: materialTheme,
+      ),
     );
   }
 }

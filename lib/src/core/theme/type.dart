@@ -2,7 +2,7 @@ part of 'theme.dart';
 
 final h1 = TextStyle(
     color: UIColors.secondaryColor,
-    fontSize: 32.sp,
+    fontSize: 42.sp,
     fontWeight: FontWeight.bold);
 
 final h2 = TextStyle(color: UIColors.secondaryColor, fontSize: 27.sp);

@@ -12,4 +12,11 @@ final ThemeData materialTheme = ThemeData(
     secondary: UIColors.secondaryColor,
   ),
   fontFamily: UIFonts.primary,
+  textTheme: TextTheme(
+    headline1: h1,
+    headline2: h2,
+    headline3: h3,
+    bodyText1: normalText,
+    bodyText2: smallText,
+  ),
 );
