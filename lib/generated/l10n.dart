@@ -59,6 +59,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Try it with with this app's repository`
+  String get tryItWithThisApp {
+    return Intl.message(
+      'Try it with with this app\'s repository',
+      name: 'tryItWithThisApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search a Github username`
+  String get searchAGithubUser {
+    return Intl.message(
+      'Search a Github username',
+      name: 'searchAGithubUser',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

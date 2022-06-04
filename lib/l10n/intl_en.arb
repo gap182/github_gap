@@ -1,3 +1,5 @@
 {
-    "findYourFavoritesRepo": "Find your favorites repositories here, right now!"
+    "findYourFavoritesRepo": "Find your favorites repositories here, right now!",
+    "tryItWithThisApp": "Try it with with this app's repository",
+    "searchAGithubUser": "Search a Github username"
 }

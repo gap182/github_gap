@@ -23,6 +23,10 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "findYourFavoritesRepo": MessageLookupByLibrary.simpleMessage(
-            "Find your favorites repositories here, right now!")
+            "Find your favorites repositories here, right now!"),
+        "searchAGithubUser":
+            MessageLookupByLibrary.simpleMessage("Search a Github username"),
+        "tryItWithThisApp": MessageLookupByLibrary.simpleMessage(
+            "Try it with with this app\'s repository")
       };
 }

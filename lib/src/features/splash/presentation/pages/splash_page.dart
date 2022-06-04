@@ -40,7 +40,7 @@ class _SplashPageState extends ConsumerState<SplashPage>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    animation = Tween<double>(begin: -200.0, end: size.height / 3.8).animate(
+    animation = Tween<double>(begin: size.height * 0.7, end: 0).animate(
         CurvedAnimation(parent: animationController!, curve: Curves.bounceOut));
 
     textAnimation = Tween<double>(begin: -200.0, end: size.height / 3.8)
@@ -68,7 +68,7 @@ class _SplashPageState extends ConsumerState<SplashPage>
                         animation: animation!,
                         builder: (context, child) {
                           return Positioned(
-                            top: animation!.value,
+                            bottom: animation!.value,
                             child: child!,
                           );
                         },

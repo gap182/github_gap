@@ -8,4 +8,5 @@ abstract class Assets {
   static const String logo = '$_general/logo.png';
   static const String logoWhite = '$_general/logo_white.png';
   static const String catProgrammer = '$_general/cat_programmer.png';
+  static const String loading = '$_general/loading.gif';
 }

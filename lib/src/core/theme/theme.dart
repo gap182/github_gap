@@ -18,5 +18,14 @@ final ThemeData materialTheme = ThemeData(
     headlineSmall: h3,
     bodyMedium: normalText,
     bodySmall: smallText,
+    labelSmall: smallText,
+    labelMedium: normalText,
+    displayMedium: normalText,
+    displaySmall: smallText,
   ),
+  inputDecorationTheme: InputDecorationTheme(
+    hintStyle: smallText,
+  ),
+  textSelectionTheme:
+      const TextSelectionThemeData(cursorColor: UIColors.secondaryColor),
 );
