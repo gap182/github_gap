@@ -3,15 +3,19 @@ import 'dart:convert';
 class ConfigState {
   ConfigState({
     required this.baseUrl,
+    required this.reposUrl,
   });
 
   final String baseUrl;
+  final String reposUrl;
 
   ConfigState copyWith({
     String? baseUrl,
+    String? reposUrl,
   }) {
     return ConfigState(
       baseUrl: baseUrl ?? this.baseUrl,
+      reposUrl: reposUrl ?? this.reposUrl,
     );
   }
 
@@ -19,13 +23,15 @@ class ConfigState {
     final result = <String, dynamic>{};
 
     result.addAll({'baseUrl': baseUrl});
+    result.addAll({'reposUrl': reposUrl});
 
     return result;
   }
 
   factory ConfigState.fromMap(Map<String, dynamic> map) {
     return ConfigState(
-      baseUrl: map['baseUrl'] ?? '',
+      baseUrl: map['base_url'] ?? '',
+      reposUrl: map['repos_url'] ?? '',
     );
   }
 
@@ -35,8 +41,5 @@ class ConfigState {
       ConfigState.fromMap(json.decode(source));
 
   @override
-  String toString() => 'ConfigState(baseUrl: $baseUrl)';
-
-  @override
-  List<Object> get props => [baseUrl];
+  String toString() => 'ConfigState(baseUrl: $baseUrl, reposUrl: $reposUrl)';
 }
