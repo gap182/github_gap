@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(828, 1792),
+      designSize: const Size(380, 820),
       builder: (context, child) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: 'GithubGAP',

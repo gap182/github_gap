@@ -16,6 +16,7 @@ class _SplashPageState extends ConsumerState<SplashPage>
     with SingleTickerProviderStateMixin {
   AnimationController? animationController;
   Animation<double>? animation;
+  Animation<double>? textAnimation;
 
   @override
   void initState() {
@@ -41,6 +42,12 @@ class _SplashPageState extends ConsumerState<SplashPage>
     final size = MediaQuery.of(context).size;
     animation = Tween<double>(begin: -200.0, end: size.height / 3.8).animate(
         CurvedAnimation(parent: animationController!, curve: Curves.bounceOut));
+
+    textAnimation = Tween<double>(begin: -200.0, end: size.height / 3.8)
+        .animate(CurvedAnimation(
+            parent: animationController!,
+            curve: Curves.fastLinearToSlowEaseIn));
+
     animationController?.forward();
     return Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
@@ -76,23 +83,23 @@ class _SplashPageState extends ConsumerState<SplashPage>
                 ),
               ),
               SizedBox(
-                width: size.width / 2,
+                width: size.width,
                 height: size.height / 2,
                 child: Stack(
                   fit: StackFit.expand,
                   alignment: Alignment.center,
                   children: [
                     AnimatedBuilder(
-                      animation: animation!,
+                      animation: textAnimation!,
                       builder: (context, child) {
                         return Positioned(
-                          bottom: animation!.value + 250.h,
+                          bottom: textAnimation!.value + 100.h,
                           child: child!,
                         );
                       },
                       child: Text(
                         "GithubGAP",
-                        style: Theme.of(context).textTheme.headline1,
+                        style: Theme.of(context).textTheme.headlineLarge,
                         textAlign: TextAlign.center,
                       ),
                     ),
