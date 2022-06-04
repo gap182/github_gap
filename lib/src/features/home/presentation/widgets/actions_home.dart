@@ -15,7 +15,7 @@ class ActionsHome extends ConsumerWidget {
     return Column(
       children: [
         PrimaryButton(
-          height: 50.h,
+          height: 60.h,
           text: S.of(context).tryItWithThisApp,
           showIcon: true,
           onPressed: () {
@@ -24,7 +24,7 @@ class ActionsHome extends ConsumerWidget {
         ),
         SizedBox(height: 20.h),
         CustomTextfield(
-          height: 50.h,
+          height: 60.h,
           hintText: S.of(context).searchAGithubUser,
           action: () {},
           showAction: true,

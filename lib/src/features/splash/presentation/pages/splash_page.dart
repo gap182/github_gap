@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:github_gap/src/core/app_values/app_values.dart';
+import 'package:github_gap/src/core/dependencies/dependencies.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
@@ -20,6 +21,7 @@ class _SplashPageState extends ConsumerState<SplashPage>
 
   @override
   void initState() {
+    ref.read(configProvider.notifier).loadConfigData();
     animationController =
         AnimationController(duration: const Duration(seconds: 4), vsync: this);
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
