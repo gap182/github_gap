@@ -35,6 +35,7 @@ class HomePage extends ConsumerWidget {
             appBar: AppBar(
               shadowColor: UIColors.secondaryColor,
               toolbarHeight: 70.h,
+              centerTitle: true,
               title: Image.asset(
                 Assets.catProgrammer,
                 height: 60.h,

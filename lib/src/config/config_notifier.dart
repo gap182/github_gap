@@ -27,4 +27,8 @@ class ConfigNotifier extends StateNotifier<ConfigState> {
   }) {
     return '${state.reposUrl}$username/$reponame/commits';
   }
+
+  String getCommitsUrlMain() {
+    return '${state.reposUrl}${state.ownerName}/${state.repoName}/commits';
+  }
 }

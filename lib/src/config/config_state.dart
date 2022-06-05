@@ -4,18 +4,26 @@ class ConfigState {
   ConfigState({
     required this.baseUrl,
     required this.reposUrl,
+    required this.ownerName,
+    required this.repoName,
   });
 
   final String baseUrl;
   final String reposUrl;
+  final String ownerName;
+  final String repoName;
 
   ConfigState copyWith({
     String? baseUrl,
     String? reposUrl,
+    String? ownerName,
+    String? repoName,
   }) {
     return ConfigState(
       baseUrl: baseUrl ?? this.baseUrl,
       reposUrl: reposUrl ?? this.reposUrl,
+      ownerName: ownerName ?? this.ownerName,
+      repoName: repoName ?? this.repoName,
     );
   }
 
@@ -24,6 +32,8 @@ class ConfigState {
 
     result.addAll({'baseUrl': baseUrl});
     result.addAll({'reposUrl': reposUrl});
+    result.addAll({'ownerName': ownerName});
+    result.addAll({'repoName': repoName});
 
     return result;
   }
@@ -32,6 +42,8 @@ class ConfigState {
     return ConfigState(
       baseUrl: map['base_url'] ?? '',
       reposUrl: map['repos_url'] ?? '',
+      ownerName: map['owner_name'] ?? '',
+      repoName: map['repo_name'] ?? '',
     );
   }
 
@@ -41,5 +53,7 @@ class ConfigState {
       ConfigState.fromMap(json.decode(source));
 
   @override
-  String toString() => 'ConfigState(baseUrl: $baseUrl, reposUrl: $reposUrl)';
+  String toString() {
+    return 'ConfigState(baseUrl: $baseUrl, reposUrl: $reposUrl, ownerName: $ownerName, repoName: $repoName)';
+  }
 }

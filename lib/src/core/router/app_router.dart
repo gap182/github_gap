@@ -1,3 +1,4 @@
+import 'package:github_gap/src/features/commits/presentation/pages/commits_page.dart';
 import 'package:github_gap/src/features/home/presentation/pages/home_page.dart';
 import 'package:github_gap/src/features/repos/presentation/pages/repos_page.dart';
 import 'package:github_gap/src/features/splash/presentation/pages/splash_page.dart';
@@ -19,6 +20,11 @@ final router = GoRouter(
           path: 'repos',
           name: 'repos',
           builder: (context, state) => const ReposPage(),
+        ),
+        GoRoute(
+          path: 'commits',
+          name: 'commits',
+          builder: (context, state) => const CommitsPage(),
         ),
       ],
     ),

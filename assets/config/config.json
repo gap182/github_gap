@@ -1,4 +1,6 @@
 {
     "base_url": "https://api.github.com/users/",
-    "repos_url": "https://api.github.com/repos/"
+    "repos_url": "https://api.github.com/repos/",
+    "owner_name": "gap182",
+    "repo_name": "github_gap"
 }
