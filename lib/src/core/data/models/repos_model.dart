@@ -20,14 +20,11 @@ class ReposModel {
   });
 
   final int? id;
-
   final String? name;
   final String? fullName;
   final bool? private;
-
   final String? htmlUrl;
   final String? description;
-
   final DateTime? createdAt;
   final DateTime? updatedAt;
   final DateTime? pushedAt;
