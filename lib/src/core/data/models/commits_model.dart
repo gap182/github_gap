@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:github_gap/src/core/domain/entities/commits_entity.dart';
+
 List<CommitsModel> commitsModelFromMap(String str) => List<CommitsModel>.from(
     json.decode(str).map((x) => CommitsModel.fromMap(x)));
 
@@ -27,6 +29,10 @@ class CommitsModel {
         commit: commit ?? this.commit,
         htmlUrl: htmlUrl ?? this.htmlUrl,
       );
+
+  CommitsEntity toEntity() {
+    return CommitsEntity.fromMap(toMap());
+  }
 
   factory CommitsModel.fromMap(Map<String, dynamic> json) => CommitsModel(
         sha: json["sha"],
@@ -117,6 +123,6 @@ class CommitAuthor {
   Map<String, dynamic> toMap() => {
         "name": name,
         "email": email,
-        "date": date?.toIso8601String(),
+        "date": date,
       };
 }

@@ -1,5 +1,5 @@
 class UserEntity {
-  final String userName;
+  final String login;
   final int id;
   final String avatarUrl;
   final String htmlUrl;
@@ -9,7 +9,7 @@ class UserEntity {
   final String twitterUsername;
   final int publicRepos;
   UserEntity({
-    required this.userName,
+    required this.login,
     required this.id,
     required this.avatarUrl,
     required this.htmlUrl,
@@ -21,7 +21,7 @@ class UserEntity {
   });
 
   UserEntity copyWith({
-    String? userName,
+    String? login,
     int? id,
     String? avatarUrl,
     String? htmlUrl,
@@ -32,7 +32,7 @@ class UserEntity {
     int? publicRepos,
   }) {
     return UserEntity(
-      userName: userName ?? this.userName,
+      login: login ?? this.login,
       id: id ?? this.id,
       avatarUrl: avatarUrl ?? this.avatarUrl,
       htmlUrl: htmlUrl ?? this.htmlUrl,
@@ -47,7 +47,7 @@ class UserEntity {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
-    result.addAll({'user_ame': userName});
+    result.addAll({'login': login});
     result.addAll({'id': id});
     result.addAll({'avatar_url': avatarUrl});
     result.addAll({'html_url': htmlUrl});
@@ -62,7 +62,7 @@ class UserEntity {
 
   factory UserEntity.fromMap(Map<String, dynamic> map) {
     return UserEntity(
-      userName: map['user_name'] ?? '',
+      login: map['login'] ?? '',
       id: map['id']?.toInt() ?? 0,
       avatarUrl: map['avatar_url'] ?? '',
       htmlUrl: map['html_url'] ?? '',

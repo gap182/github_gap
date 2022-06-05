@@ -48,9 +48,9 @@ class ReposEntity {
     result.addAll({'full_name': fullName});
     result.addAll({'html_url': htmlUrl});
     result.addAll({'description': description});
-    result.addAll({'created_at': createdAt.millisecondsSinceEpoch});
-    result.addAll({'updated_at': updatedAt.millisecondsSinceEpoch});
-    result.addAll({'pushed_at': pushedAt.millisecondsSinceEpoch});
+    result.addAll({'created_at': createdAt});
+    result.addAll({'updated_at': updatedAt});
+    result.addAll({'pushed_at': pushedAt});
 
     return result;
   }
@@ -62,9 +62,9 @@ class ReposEntity {
       fullName: map['full_name'] ?? '',
       htmlUrl: map['html_url'] ?? '',
       description: map['description'] ?? '',
-      createdAt: DateTime.fromMillisecondsSinceEpoch(map['created_at']),
-      updatedAt: DateTime.fromMillisecondsSinceEpoch(map['updated_at']),
-      pushedAt: DateTime.fromMillisecondsSinceEpoch(map['pushed_at']),
+      createdAt: map['created_at'],
+      updatedAt: map['updated_at'],
+      pushedAt: map['pushed_at'],
     );
   }
 

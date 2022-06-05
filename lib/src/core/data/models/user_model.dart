@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:github_gap/src/core/domain/entities/user_entity.dart';
+
 UserModel userModelFromMap(String str) => UserModel.fromMap(json.decode(str));
 
 String userModelToMap(UserModel data) => json.encode(data.toMap());
@@ -53,6 +55,10 @@ class UserModel {
         twitterUsername: twitterUsername ?? this.twitterUsername,
         publicRepos: publicRepos ?? this.publicRepos,
       );
+
+  UserEntity toEntity() {
+    return UserEntity.fromMap(toMap());
+  }
 
   factory UserModel.fromMap(Map<String, dynamic> json) => UserModel(
         login: json["login"],

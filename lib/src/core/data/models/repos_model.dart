@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:github_gap/src/core/domain/entities/repos_entity.dart';
+
 List<ReposModel> reposModelFromMap(String str) =>
     List<ReposModel>.from(json.decode(str).map((x) => ReposModel.fromMap(x)));
 
@@ -52,6 +54,10 @@ class ReposModel {
         pushedAt: pushedAt ?? this.pushedAt,
       );
 
+  ReposEntity toEntity() {
+    return ReposEntity.fromMap(toMap());
+  }
+
   factory ReposModel.fromMap(Map<String, dynamic> json) => ReposModel(
         id: json["id"],
         name: json["name"],
@@ -59,9 +65,15 @@ class ReposModel {
         private: json["private"],
         htmlUrl: json["html_url"],
         description: json["description"],
-        createdAt: json["created_at"],
-        updatedAt: json["updated_at"],
-        pushedAt: json["pushed_at"],
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+        pushedAt: json["pushed_at"] == null
+            ? null
+            : DateTime.parse(json["pushed_at"]),
       );
 
   Map<String, dynamic> toMap() => {
