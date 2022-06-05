@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final reposModel = reposModelFromMap(jsonString);
-
 import 'dart:convert';
 
 List<ReposModel> reposModelFromMap(String str) =>
