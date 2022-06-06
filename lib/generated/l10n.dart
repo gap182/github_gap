@@ -79,6 +79,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Ups, we found an error`
+  String get errorTitle {
+    return Intl.message(
+      'Ups, we found an error',
+      name: 'errorTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It looks like we can't guarantee your internet connection, please check it out and try again`
+  String get noInternetError {
+    return Intl.message(
+      'It looks like we can\'t guarantee your internet connection, please check it out and try again',
+      name: 'noInternetError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It looks like the user that you are looking for, doesn't exist, please try again`
+  String get userNotFoundError {
+    return Intl.message(
+      'It looks like the user that you are looking for, doesn\'t exist, please try again',
+      name: 'userNotFoundError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It looks like you reached the query limits, please generate a new Github token`
+  String get limitReachedError {
+    return Intl.message(
+      'It looks like you reached the query limits, please generate a new Github token',
+      name: 'limitReachedError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It looks like the server is not workig well right now, please try again later`
+  String get serverError {
+    return Intl.message(
+      'It looks like the server is not workig well right now, please try again later',
+      name: 'serverError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It looks like something went wrong with the app, please contact support`
+  String get internalError {
+    return Intl.message(
+      'It looks like something went wrong with the app, please contact support',
+      name: 'internalError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:github_gap/generated/l10n.dart';
 import 'package:github_gap/src/core/app_values/app_values.dart';
 import 'package:github_gap/src/core/dependencies/dependencies.dart';
+import 'package:github_gap/src/core/utils/error_dialog.dart';
 import 'package:github_gap/src/core/widgets/custom_loading.dart';
 import 'package:github_gap/src/features/home/presentation/state/home_state.dart';
 import 'package:github_gap/src/features/home/presentation/widgets/actions_home.dart';
@@ -23,6 +24,10 @@ class HomePage extends ConsumerWidget {
       (prev, curr) {
         if (curr.homeStatus == HomeStatus.done) {
           context.go('/home/repos');
+        } else if (curr.homeStatus == HomeStatus.error) {
+          final error =
+              ref.watch(homeProvider.select((value) => value.errorHandler));
+          showErroDialog(context, error?.keyId);
         }
       },
     );

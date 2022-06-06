@@ -1,5 +1,11 @@
 {
     "findYourFavoritesRepo": "Find your favorites repositories here, right now!",
     "tryItWithThisApp": "Try it with with this app's repository",
-    "searchAGithubUser": "Search a Github username"
+    "searchAGithubUser": "Search a Github username",
+    "errorTitle": "Ups, we found an error",
+    "noInternetError": "It looks like we can't guarantee your internet connection, please check it out and try again",
+    "userNotFoundError": "It looks like the user that you are looking for, doesn't exist, please try again",
+    "limitReachedError": "It looks like you reached the query limits, please generate a new Github token",
+    "serverError": "It looks like the server is not workig well right now, please try again later",
+    "internalError": "It looks like something went wrong with the app, please contact support"
 }

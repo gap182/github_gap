@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:github_gap/src/core/data/models/commits_model.dart';
 import 'package:github_gap/src/core/data/models/repos_model.dart';
@@ -76,8 +74,18 @@ class DataService {
       return ResponseModel(
           response: DataEntity(userEntity: userEntity), error: null);
     } on DioError catch (e) {
+      print('DIO ERROR');
+      print(e);
       print(e.response);
-      if (e.error == SocketException) {
+      print(e.response?.statusCode);
+
+      if (e.message.contains('SocketException')) {
+        return ResponseModel(
+          response: null,
+          error: ErrorHandler(statusCode: -1, keyId: 'no_internet'),
+        );
+      } else if (e.type == DioErrorType.receiveTimeout ||
+          e.type == DioErrorType.connectTimeout) {
         return ResponseModel(
           response: null,
           error: ErrorHandler(statusCode: -1, keyId: 'no_internet'),
@@ -105,6 +113,8 @@ class DataService {
         );
       }
     } catch (e) {
+      print("OTHER ERROR");
+      print(e);
       return ResponseModel(
         response: null,
         error: ErrorHandler(statusCode: -2, keyId: 'internal_error'),

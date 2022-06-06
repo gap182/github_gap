@@ -7,9 +7,10 @@ final configProvider =
 
 final dioProvider = Provider<Dio>((ref) {
   final config = ref.watch(configProvider);
+  const token = String.fromEnvironment('token');
 
   final auth =
-      'Basic ${base64Encode(utf8.encode('${config.ownerName}:${config.access}'))}';
+      'Basic ${base64Encode(utf8.encode('${config.ownerName}:$token'))}';
 
   final options = BaseOptions(
     baseUrl: config.baseUrl,

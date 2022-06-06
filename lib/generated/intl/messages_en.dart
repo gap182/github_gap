@@ -22,11 +22,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "errorTitle":
+            MessageLookupByLibrary.simpleMessage("Ups, we found an error"),
         "findYourFavoritesRepo": MessageLookupByLibrary.simpleMessage(
             "Find your favorites repositories here, right now!"),
+        "internalError": MessageLookupByLibrary.simpleMessage(
+            "It looks like something went wrong with the app, please contact support"),
+        "limitReachedError": MessageLookupByLibrary.simpleMessage(
+            "It looks like you reached the query limits, please generate a new Github token"),
+        "noInternetError": MessageLookupByLibrary.simpleMessage(
+            "It looks like we can\'t guarantee your internet connection, please check it out and try again"),
         "searchAGithubUser":
             MessageLookupByLibrary.simpleMessage("Search a Github username"),
+        "serverError": MessageLookupByLibrary.simpleMessage(
+            "It looks like the server is not workig well right now, please try again later"),
         "tryItWithThisApp": MessageLookupByLibrary.simpleMessage(
-            "Try it with with this app\'s repository")
+            "Try it with with this app\'s repository"),
+        "userNotFoundError": MessageLookupByLibrary.simpleMessage(
+            "It looks like the user that you are looking for, doesn\'t exist, please try again")
       };
 }
