@@ -91,7 +91,7 @@ class AvatarImage extends StatelessWidget {
               ),
               SizedBox(height: 5.h),
               Text(
-                "Bio: @${userInfoEntity?.bio}",
+                "Bio: ${userInfoEntity?.bio}",
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall
