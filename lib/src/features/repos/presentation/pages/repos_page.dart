@@ -50,14 +50,19 @@ class ReposPage extends ConsumerWidget {
                       ref
                           .read(reposProvider.notifier)
                           .changeSelectedRepo(reposList?[index]);
-                      context.push('/home/commits');
+                      context.push('/home/commits', extra: index);
                     },
-                    child: RepoCard(
-                      name: reposList?[index].reposInfoEntity.name,
-                      description:
-                          reposList?[index].reposInfoEntity.description,
-                      createdAt:
-                          reposList?[index].reposInfoEntity.createdAt.format(),
+                    child: Hero(
+                      tag: 'card_$index',
+                      child: RepoCard(
+                        name: reposList?[index].reposInfoEntity.name,
+                        description:
+                            reposList?[index].reposInfoEntity.description,
+                        createdAt: reposList?[index]
+                            .reposInfoEntity
+                            .createdAt
+                            .format(),
+                      ),
                     ),
                   );
                 },

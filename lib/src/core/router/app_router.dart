@@ -37,7 +37,12 @@ final router = GoRouter(
         GoRoute(
           path: 'commits',
           name: 'commits',
-          builder: (context, state) => const CommitsPage(),
+          builder: (context, state) {
+            final index = state.extra! as int;
+            return CommitsPage(
+              indexTag: index,
+            );
+          },
         ),
       ],
     ),

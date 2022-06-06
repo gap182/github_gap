@@ -1,6 +1,7 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:github_gap/generated/l10n.dart';
 import 'package:github_gap/src/core/app_values/app_values.dart';
 import 'package:github_gap/src/core/dependencies/dependencies.dart';
@@ -15,10 +16,14 @@ import 'package:github_gap/src/features/repos/presentation/widgets/repo_card.dar
 class CommitsPage extends ConsumerWidget {
   const CommitsPage({
     Key? key,
+    required this.indexTag,
   }) : super(key: key);
+
+  final int indexTag;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print(indexTag);
     final reposEntity =
         ref.watch(reposProvider.select((value) => value.selectedRepo));
 
@@ -53,10 +58,13 @@ class CommitsPage extends ConsumerWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Column(
               children: [
-                RepoCard(
-                  name: reposEntity?.reposInfoEntity.name,
-                  description: reposEntity?.reposInfoEntity.description,
-                  createdAt: reposEntity?.reposInfoEntity.createdAt.format(),
+                Hero(
+                  tag: 'card_$indexTag',
+                  child: RepoCard(
+                    name: reposEntity?.reposInfoEntity.name,
+                    description: reposEntity?.reposInfoEntity.description,
+                    createdAt: reposEntity?.reposInfoEntity.createdAt.format(),
+                  ),
                 ),
                 Expanded(
                   child: ListView.builder(
