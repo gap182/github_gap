@@ -17,7 +17,6 @@ class ReposPage extends ConsumerWidget {
     final repoData = ref.watch(reposProvider);
     final reposList = repoData.dataEntity?.userEntity?.repos;
     final url = repoData.dataEntity?.userEntity?.userInfoEntity.htmlUrl;
-    print(url);
 
     return Scaffold(
       appBar: commonAppbar(context, true, title: S.of(context).repositories),
