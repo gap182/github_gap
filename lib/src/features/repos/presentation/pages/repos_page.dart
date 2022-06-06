@@ -16,6 +16,8 @@ class ReposPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final repoData = ref.watch(reposProvider);
     final reposList = repoData.dataEntity?.userEntity?.repos;
+    final url = repoData.dataEntity?.userEntity?.userInfoEntity.htmlUrl;
+    print(url);
 
     return Scaffold(
       appBar: commonAppbar(context, true, title: S.of(context).repositories),
@@ -26,9 +28,16 @@ class ReposPage extends ConsumerWidget {
           child: Column(
             children: [
               SafeArea(
-                child: AvatarImage(
-                  userInfoEntity:
-                      repoData.dataEntity?.userEntity?.userInfoEntity,
+                child: GestureDetector(
+                  onTap: url != null
+                      ? () {
+                          context.push('/home/repos/webpage', extra: url);
+                        }
+                      : null,
+                  child: AvatarImage(
+                    userInfoEntity:
+                        repoData.dataEntity?.userEntity?.userInfoEntity,
+                  ),
                 ),
               ),
               SizedBox(height: 20.h),
@@ -37,23 +46,19 @@ class ReposPage extends ConsumerWidget {
                 shrinkWrap: true,
                 itemCount: reposList?.length,
                 itemBuilder: (context, index) {
-                  return SingleChildScrollView(
-                    child: GestureDetector(
-                      onTap: () {
-                        ref
-                            .read(reposProvider.notifier)
-                            .changeSelectedRepo(reposList?[index]);
-                        context.push('/home/commits');
-                      },
-                      child: RepoCard(
-                        name: reposList?[index].reposInfoEntity.name,
-                        description:
-                            reposList?[index].reposInfoEntity.description,
-                        createdAt: reposList?[index]
-                            .reposInfoEntity
-                            .createdAt
-                            .format(),
-                      ),
+                  return GestureDetector(
+                    onTap: () {
+                      ref
+                          .read(reposProvider.notifier)
+                          .changeSelectedRepo(reposList?[index]);
+                      context.push('/home/commits');
+                    },
+                    child: RepoCard(
+                      name: reposList?[index].reposInfoEntity.name,
+                      description:
+                          reposList?[index].reposInfoEntity.description,
+                      createdAt:
+                          reposList?[index].reposInfoEntity.createdAt.format(),
                     ),
                   );
                 },

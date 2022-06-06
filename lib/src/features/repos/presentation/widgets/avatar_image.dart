@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:github_gap/src/core/app_values/app_values.dart';
 import 'package:github_gap/src/core/domain/entities/user_entity.dart';
+import 'package:go_router/go_router.dart';
 
 class AvatarImage extends StatelessWidget {
   const AvatarImage({
@@ -15,6 +16,7 @@ class AvatarImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final avatarUrl = userInfoEntity?.avatarUrl;
+    final url = userInfoEntity?.htmlUrl;
 
     return Column(
       children: [
@@ -31,14 +33,21 @@ class AvatarImage extends StatelessWidget {
               color: Theme.of(context).colorScheme.secondary,
             ),
             padding: const EdgeInsets.all(5),
-            child: ClipOval(
-              child: avatarUrl != null
-                  ? CachedNetworkImage(
-                      imageUrl: avatarUrl,
-                    )
-                  : Image.asset(
-                      Assets.logoWhite,
-                    ),
+            child: GestureDetector(
+              onTap: url != null
+                  ? () {
+                      context.push('/home/repos/webpage', extra: url);
+                    }
+                  : null,
+              child: ClipOval(
+                child: avatarUrl != null
+                    ? CachedNetworkImage(
+                        imageUrl: avatarUrl,
+                      )
+                    : Image.asset(
+                        Assets.logoWhite,
+                      ),
+              ),
             ),
           ),
         ),

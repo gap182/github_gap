@@ -62,16 +62,13 @@ class CommitsPage extends ConsumerWidget {
                   child: ListView.builder(
                     itemCount: reposEntity?.commits.length,
                     itemBuilder: (context, index) {
-                      return SingleChildScrollView(
-                        child: CommitCard(
-                          sha: reposEntity?.commits[index].sha,
-                          commiter: reposEntity
-                              ?.commits[index].commit.committer?.name,
-                          date: reposEntity
-                              ?.commits[index].commit.committer?.date
-                              ?.hourFormat(),
-                          message: reposEntity?.commits[index].commit.message,
-                        ),
+                      return CommitCard(
+                        sha: reposEntity?.commits[index].sha,
+                        commiter:
+                            reposEntity?.commits[index].commit.committer?.name,
+                        date: reposEntity?.commits[index].commit.committer?.date
+                            ?.hourFormat(),
+                        message: reposEntity?.commits[index].commit.message,
                       );
                     },
                   ),

@@ -28,17 +28,27 @@ class CommitCard extends StatelessWidget {
         color: UIColors.primaryColor.withOpacity(0.6),
         borderRadius: borderRadiusMedium,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Text("Sha: $sha", style: Theme.of(context).textTheme.bodySmall),
-          Text("Commiter: $commiter",
-              style: Theme.of(context).textTheme.bodySmall),
-          Text("Date: $date", style: Theme.of(context).textTheme.bodySmall),
-          Text("Message: $message",
-              style: Theme.of(context).textTheme.bodySmall),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Sha: $sha", style: Theme.of(context).textTheme.bodySmall),
+            SizedBox(
+              height: 5.h,
+            ),
+            Text("Commiter: $commiter",
+                style: Theme.of(context).textTheme.bodySmall),
+            SizedBox(
+              height: 5.h,
+            ),
+            Text("Date: $date", style: Theme.of(context).textTheme.bodySmall),
+            SizedBox(
+              height: 5.h,
+            ),
+            Text("Message: $message",
+                style: Theme.of(context).textTheme.bodySmall),
+          ],
+        ),
       ),
     );
   }

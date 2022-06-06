@@ -26,17 +26,25 @@ class RepoCard extends StatelessWidget {
         color: UIColors.auxiliaryColor.withOpacity(0.6),
         borderRadius: borderRadiusMedium,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Text("Repository: $name",
-              style: Theme.of(context).textTheme.bodyMedium),
-          Text("Description: $description",
-              style: Theme.of(context).textTheme.bodySmall),
-          Text("Created At: $createdAt",
-              style: Theme.of(context).textTheme.bodySmall),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text("Repository: $name",
+                style: Theme.of(context).textTheme.bodyMedium),
+            SizedBox(
+              height: 15.h,
+            ),
+            Text("Description: $description",
+                style: Theme.of(context).textTheme.bodySmall),
+            SizedBox(
+              height: 15.h,
+            ),
+            Text("Created At: $createdAt",
+                style: Theme.of(context).textTheme.bodySmall),
+          ],
+        ),
       ),
     );
   }
