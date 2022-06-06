@@ -1,5 +1,4 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:github_gap/src/core/app_values/app_values.dart';
 
 class PrimaryButton extends StatelessWidget {

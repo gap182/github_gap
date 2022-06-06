@@ -8,7 +8,7 @@ import 'package:github_gap/src/core/widgets/primary_button.dart';
 
 void showErroDialog(BuildContext context, String? key) {
   final message = getErrorMessage(context, key);
-  print('calling dialog');
+
   showDialog(
     context: context,
     builder: (context) => Dialog(

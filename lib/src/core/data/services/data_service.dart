@@ -23,8 +23,7 @@ class DataService {
   Future<List<ReposModel>> getRepos(String userName) async {
     final repoList = <ReposModel>[];
     final response = await dio.get('users/$userName/repos');
-    print("LENGHT REPOS IN SERVICE");
-    print(response.data);
+
     for (var element in response.data) {
       repoList.add(ReposModel.fromMap(element));
     }
@@ -50,8 +49,6 @@ class DataService {
 
       //Repos data
       final reposResponse = await getRepos(userName);
-      print('😃');
-      print(reposResponse.length);
 
       // //Commits data
       final reposEntityList = <ReposEntity>[];
@@ -78,11 +75,6 @@ class DataService {
       return ResponseModel(
           response: DataEntity(userEntity: userEntity), error: null);
     } on DioError catch (e) {
-      print('DIO ERROR');
-      print(e);
-      print(e.response);
-      print(e.response?.statusCode);
-
       if (e.message.contains('SocketException')) {
         return ResponseModel(
           response: null,
@@ -117,8 +109,6 @@ class DataService {
         );
       }
     } catch (e) {
-      print("OTHER ERROR");
-      print(e);
       return ResponseModel(
         response: null,
         error: ErrorHandler(statusCode: -2, keyId: 'internal_error'),

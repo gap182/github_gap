@@ -30,12 +30,9 @@ class ReposNotifier extends StateNotifier<ReposState> {
       final response = await repository
           .getData(state.dataEntity!.userEntity!.userInfoEntity.login);
       if (response.response != null && response.error == null) {
-        print('REPO LENGHT');
-        print(response.response?.userEntity?.repos.length);
         ref.read(reposProvider.notifier).updateData(response.response);
         state = state.copyWith(reposStatus: ReposStatus.done);
       } else {
-        print('error response');
         state = state.copyWith(
             reposStatus: ReposStatus.error, errorHandler: () => response.error);
       }
