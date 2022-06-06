@@ -6,6 +6,8 @@ import 'package:github_gap/src/core/dependencies/dependencies.dart';
 import 'package:github_gap/src/core/theme/theme.dart';
 import 'package:github_gap/src/core/utils/common_appbar.dart';
 import 'package:github_gap/src/core/utils/common_extension.dart';
+import 'package:github_gap/src/core/utils/error_dialog.dart';
+import 'package:github_gap/src/features/repos/presentation/state/repos_state.dart';
 import 'package:github_gap/src/features/repos/presentation/widgets/avatar_image.dart';
 import 'package:github_gap/src/features/repos/presentation/widgets/repo_card.dart';
 import 'package:go_router/go_router.dart';
@@ -17,6 +19,17 @@ class ReposPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final repoData = ref.watch(reposProvider);
     final reposList = repoData.dataEntity?.userEntity?.repos;
+
+    ref.listen<ReposState>(
+      reposProvider,
+      (prev, curr) {
+        if (curr.reposStatus == ReposStatus.error) {
+          final error =
+              ref.watch(homeProvider.select((value) => value.errorHandler));
+          showErroDialog(context, error?.keyId);
+        }
+      },
+    );
 
     return Scaffold(
       appBar: commonAppbar(context, true),

@@ -31,12 +31,19 @@ class HomeNotifier extends StateNotifier<HomeState> {
     state = state.copyWith(homeStatus: HomeStatus.initial);
   }
 
-  void loadThisRepoData() async {
+  Future<void> loadThisRepoData() async {
     state = state.copyWith(homeStatus: HomeStatus.loading);
+
     final response = await repository.getData("gap182");
+
     if (response.response != null && response.error == null) {
       ref.read(reposProvider.notifier).updateData(response.response);
-      state = state.copyWith(homeStatus: HomeStatus.done);
+
+      final currentRepo = response.response?.userEntity?.repos.firstWhere(
+          (element) => element.reposInfoEntity.name == "github_gap");
+
+      ref.read(reposProvider.notifier).changeSelectedRepo(currentRepo);
+      state = state.copyWith(homeStatus: HomeStatus.initial);
     } else {
       state = state.copyWith(
           homeStatus: HomeStatus.error, errorHandler: () => response.error);

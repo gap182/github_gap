@@ -6,6 +6,7 @@ import 'package:github_gap/src/core/app_values/app_values.dart';
 import 'package:github_gap/src/core/dependencies/dependencies.dart';
 import 'package:github_gap/src/core/widgets/custom_textfield.dart';
 import 'package:github_gap/src/core/widgets/primary_button.dart';
+import 'package:go_router/go_router.dart';
 
 class ActionsHome extends ConsumerWidget {
   const ActionsHome({Key? key}) : super(key: key);
@@ -18,8 +19,10 @@ class ActionsHome extends ConsumerWidget {
           height: 60.h,
           text: S.of(context).tryItWithThisApp,
           showIcon: true,
-          onPressed: () {
-            ref.read(homeProvider.notifier).loadThisRepoData();
+          onPressed: () async {
+            await ref.read(homeProvider.notifier).loadThisRepoData();
+            // ignore: use_build_context_synchronously
+            context.go('/home/commits');
           },
         ),
         SizedBox(height: 20.h),

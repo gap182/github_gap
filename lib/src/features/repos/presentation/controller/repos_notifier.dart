@@ -26,9 +26,9 @@ class ReposNotifier extends StateNotifier<ReposState> {
 
   void reloadCommits() async {
     state = state.copyWith(reposStatus: ReposStatus.loading);
-    if (state.selectedRepo!.commits[0].commit.author?.name != null) {
+    if (state.dataEntity?.userEntity?.userInfoEntity.login != null) {
       final response = await repository
-          .getData(state.selectedRepo!.commits[0].commit.author!.name!);
+          .getData(state.dataEntity!.userEntity!.userInfoEntity.login);
       if (response.response != null && response.error == null) {
         print('REPO LENGHT');
         print(response.response?.userEntity?.repos.length);
