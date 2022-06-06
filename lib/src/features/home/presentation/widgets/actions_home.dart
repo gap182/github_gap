@@ -19,19 +19,30 @@ class ActionsHome extends ConsumerWidget {
           text: S.of(context).tryItWithThisApp,
           showIcon: true,
           onPressed: () {
-            ref.read(homeProvider.notifier).loadMainRepo();
+            ref.read(homeProvider.notifier).loadThisRepoData();
           },
         ),
         SizedBox(height: 20.h),
-        CustomTextfield(
-          height: 60.h,
-          hintText: S.of(context).searchAGithubUser,
-          action: () {},
-          showAction: true,
-          iconAction: const Icon(
-            Icons.search,
-            color: UIColors.secondaryColor,
-          ),
+        Consumer(
+          builder: (context, ref, child) {
+            final textToSearch =
+                ref.watch(homeProvider.select((value) => value.textToSearch));
+            return CustomTextfield(
+              height: 60.h,
+              hintText: S.of(context).searchAGithubUser,
+              onChanged: ref.read(homeProvider.notifier).changeTextToSearch,
+              action: (textToSearch != null && textToSearch.isNotEmpty)
+                  ? () {
+                      ref.read(homeProvider.notifier).loadUserData();
+                    }
+                  : null,
+              showAction: true,
+              iconAction: const Icon(
+                Icons.search,
+                color: UIColors.secondaryColor,
+              ),
+            );
+          },
         ),
       ],
     );

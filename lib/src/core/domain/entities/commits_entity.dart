@@ -113,12 +113,12 @@ class CommitAuthor {
   factory CommitAuthor.fromMap(Map<String, dynamic> json) => CommitAuthor(
         name: json["name"],
         email: json["email"],
-        date: json["date"] == null ? null : DateTime.parse(json["date"]),
+        date: json["date"],
       );
 
   Map<String, dynamic> toMap() => {
         "name": name,
         "email": email,
-        "date": date?.toIso8601String(),
+        "date": date,
       };
 }

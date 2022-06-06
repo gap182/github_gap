@@ -1,4 +1,46 @@
+import 'package:github_gap/src/core/domain/entities/repos_entity.dart';
+
 class UserEntity {
+  final UserInfoEntity userInfoEntity;
+  final List<ReposEntity> repos;
+  UserEntity({
+    required this.userInfoEntity,
+    this.repos = const [],
+  });
+
+  UserEntity copyWith({
+    UserInfoEntity? userInfoEntity,
+    List<ReposEntity>? repos,
+  }) {
+    return UserEntity(
+      userInfoEntity: userInfoEntity ?? this.userInfoEntity,
+      repos: repos ?? this.repos,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    result.addAll({'userInfoEntity': userInfoEntity.toMap()});
+    result.addAll({'repos': repos.map((x) => x.toMap()).toList()});
+
+    return result;
+  }
+
+  factory UserEntity.fromMap(Map<String, dynamic> map) {
+    return UserEntity(
+      userInfoEntity: UserInfoEntity.fromMap(map['userInfoEntity']),
+      repos: List<ReposEntity>.from(
+          map['repos']?.map((x) => ReposEntity.fromMap(x))),
+    );
+  }
+
+  @override
+  String toString() =>
+      'UserEntity(userInfoEntity: $userInfoEntity, repos: $repos)';
+}
+
+class UserInfoEntity {
   final String login;
   final int id;
   final String avatarUrl;
@@ -8,7 +50,7 @@ class UserEntity {
   final String bio;
   final String twitterUsername;
   final int publicRepos;
-  UserEntity({
+  UserInfoEntity({
     required this.login,
     required this.id,
     required this.avatarUrl,
@@ -20,7 +62,7 @@ class UserEntity {
     required this.publicRepos,
   });
 
-  UserEntity copyWith({
+  UserInfoEntity copyWith({
     String? login,
     int? id,
     String? avatarUrl,
@@ -31,7 +73,7 @@ class UserEntity {
     String? twitterUsername,
     int? publicRepos,
   }) {
-    return UserEntity(
+    return UserInfoEntity(
       login: login ?? this.login,
       id: id ?? this.id,
       avatarUrl: avatarUrl ?? this.avatarUrl,
@@ -60,8 +102,8 @@ class UserEntity {
     return result;
   }
 
-  factory UserEntity.fromMap(Map<String, dynamic> map) {
-    return UserEntity(
+  factory UserInfoEntity.fromMap(Map<String, dynamic> map) {
+    return UserInfoEntity(
       login: map['login'] ?? '',
       id: map['id']?.toInt() ?? 0,
       avatarUrl: map['avatar_url'] ?? '',

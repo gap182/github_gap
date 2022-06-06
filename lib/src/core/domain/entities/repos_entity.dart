@@ -1,4 +1,46 @@
+import 'package:github_gap/src/core/domain/entities/commits_entity.dart';
+
 class ReposEntity {
+  final ReposInfoEntity reposInfoEntity;
+  final List<CommitsEntity> commits;
+  ReposEntity({
+    required this.reposInfoEntity,
+    this.commits = const [],
+  });
+
+  ReposEntity copyWith({
+    ReposInfoEntity? reposInfoEntity,
+    List<CommitsEntity>? commits,
+  }) {
+    return ReposEntity(
+      reposInfoEntity: reposInfoEntity ?? this.reposInfoEntity,
+      commits: commits ?? this.commits,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    result.addAll({'reposInfoEntity': reposInfoEntity.toMap()});
+    result.addAll({'commits': commits.map((x) => x.toMap()).toList()});
+
+    return result;
+  }
+
+  factory ReposEntity.fromMap(Map<String, dynamic> map) {
+    return ReposEntity(
+      reposInfoEntity: ReposInfoEntity.fromMap(map['reposInfoEntity']),
+      commits: List<CommitsEntity>.from(
+          map['commits']?.map((x) => CommitsEntity.fromMap(x))),
+    );
+  }
+
+  @override
+  String toString() =>
+      'ReposEntity(reposInfoEntity: $reposInfoEntity, commits: $commits)';
+}
+
+class ReposInfoEntity {
   final int id;
   final String name;
   final String fullName;
@@ -7,7 +49,7 @@ class ReposEntity {
   final DateTime createdAt;
   final DateTime updatedAt;
   final DateTime pushedAt;
-  ReposEntity({
+  ReposInfoEntity({
     required this.id,
     required this.name,
     required this.fullName,
@@ -18,7 +60,7 @@ class ReposEntity {
     required this.pushedAt,
   });
 
-  ReposEntity copyWith({
+  ReposInfoEntity copyWith({
     int? id,
     String? name,
     String? fullName,
@@ -28,7 +70,7 @@ class ReposEntity {
     DateTime? updatedAt,
     DateTime? pushedAt,
   }) {
-    return ReposEntity(
+    return ReposInfoEntity(
       id: id ?? this.id,
       name: name ?? this.name,
       fullName: fullName ?? this.fullName,
@@ -55,8 +97,8 @@ class ReposEntity {
     return result;
   }
 
-  factory ReposEntity.fromMap(Map<String, dynamic> map) {
-    return ReposEntity(
+  factory ReposInfoEntity.fromMap(Map<String, dynamic> map) {
+    return ReposInfoEntity(
       id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
       fullName: map['full_name'] ?? '',
@@ -70,6 +112,6 @@ class ReposEntity {
 
   @override
   String toString() {
-    return 'ReposEntity(id: $id, name: $name, fullName: $fullName, htmlUrl: $htmlUrl, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt)';
+    return 'ReposInfoEntity(id: $id, name: $name, fullName: $fullName, htmlUrl: $htmlUrl, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt)';
   }
 }

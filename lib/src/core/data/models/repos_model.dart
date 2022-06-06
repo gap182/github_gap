@@ -54,8 +54,8 @@ class ReposModel {
         pushedAt: pushedAt ?? this.pushedAt,
       );
 
-  ReposEntity toEntity() {
-    return ReposEntity.fromMap(toMap());
+  ReposInfoEntity toEntity() {
+    return ReposInfoEntity.fromMap(toMap());
   }
 
   factory ReposModel.fromMap(Map<String, dynamic> json) => ReposModel(

@@ -4,3 +4,20 @@ final configProvider =
     StateNotifierProvider<ConfigNotifier, ConfigState>((ref) {
   return ConfigNotifier();
 });
+
+final dioProvider = Provider<Dio>((ref) {
+  final config = ref.watch(configProvider);
+
+  final auth =
+      'Basic ${base64Encode(utf8.encode('${config.ownerName}:${config.access}'))}';
+
+  final options = BaseOptions(
+    baseUrl: config.baseUrl,
+    headers: {
+      'authorization': auth,
+    },
+    connectTimeout: 20000,
+    receiveTimeout: 20000,
+  );
+  return Dio(options);
+});

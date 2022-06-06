@@ -56,8 +56,8 @@ class UserModel {
         publicRepos: publicRepos ?? this.publicRepos,
       );
 
-  UserEntity toEntity() {
-    return UserEntity.fromMap(toMap());
+  UserInfoEntity toEntity() {
+    return UserInfoEntity.fromMap(toMap());
   }
 
   factory UserModel.fromMap(Map<String, dynamic> json) => UserModel(
