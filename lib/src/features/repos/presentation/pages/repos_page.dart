@@ -1,6 +1,7 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:github_gap/generated/l10n.dart';
 import 'package:github_gap/src/core/app_values/app_values.dart';
 import 'package:github_gap/src/core/dependencies/dependencies.dart';
 import 'package:github_gap/src/core/theme/theme.dart';
@@ -20,19 +21,8 @@ class ReposPage extends ConsumerWidget {
     final repoData = ref.watch(reposProvider);
     final reposList = repoData.dataEntity?.userEntity?.repos;
 
-    ref.listen<ReposState>(
-      reposProvider,
-      (prev, curr) {
-        if (curr.reposStatus == ReposStatus.error) {
-          final error =
-              ref.watch(homeProvider.select((value) => value.errorHandler));
-          showErroDialog(context, error?.keyId);
-        }
-      },
-    );
-
     return Scaffold(
-      appBar: commonAppbar(context, true),
+      appBar: commonAppbar(context, true, title: S.of(context).repositories),
       backgroundColor: Theme.of(context).backgroundColor,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),

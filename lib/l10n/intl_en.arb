@@ -7,5 +7,7 @@
     "userNotFoundError": "It looks like the user that you are looking for, doesn't exist, please try again",
     "limitReachedError": "It looks like you reached the query limits, please generate a new Github token",
     "serverError": "It looks like the server is not workig well right now, please try again later",
-    "internalError": "It looks like something went wrong with the app, please contact support"
+    "internalError": "It looks like something went wrong with the app, please contact support",
+    "repositories": "Repositories",
+    "commits": "Commits"
 }

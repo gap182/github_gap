@@ -139,6 +139,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Repositories`
+  String get repositories {
+    return Intl.message(
+      'Repositories',
+      name: 'repositories',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Commits`
+  String get commits {
+    return Intl.message(
+      'Commits',
+      name: 'commits',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

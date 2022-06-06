@@ -35,6 +35,7 @@ class ReposNotifier extends StateNotifier<ReposState> {
         ref.read(reposProvider.notifier).updateData(response.response);
         state = state.copyWith(reposStatus: ReposStatus.done);
       } else {
+        print('error response');
         state = state.copyWith(
             reposStatus: ReposStatus.error, errorHandler: () => response.error);
       }

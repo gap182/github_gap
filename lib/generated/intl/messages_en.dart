@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "commits": MessageLookupByLibrary.simpleMessage("Commits"),
         "errorTitle":
             MessageLookupByLibrary.simpleMessage("Ups, we found an error"),
         "findYourFavoritesRepo": MessageLookupByLibrary.simpleMessage(
@@ -32,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "It looks like you reached the query limits, please generate a new Github token"),
         "noInternetError": MessageLookupByLibrary.simpleMessage(
             "It looks like we can\'t guarantee your internet connection, please check it out and try again"),
+        "repositories": MessageLookupByLibrary.simpleMessage("Repositories"),
         "searchAGithubUser":
             MessageLookupByLibrary.simpleMessage("Search a Github username"),
         "serverError": MessageLookupByLibrary.simpleMessage(
