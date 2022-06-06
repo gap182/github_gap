@@ -7,6 +7,7 @@ part 'shape.dart';
 
 final ThemeData materialTheme = ThemeData(
   primaryColor: UIColors.primaryColor,
+  backgroundColor: UIColors.primaryColor,
   colorScheme: const ColorScheme.light(
     primary: UIColors.primaryColor,
     secondary: UIColors.secondaryColor,

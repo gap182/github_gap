@@ -23,6 +23,8 @@ class DataService {
   Future<List<ReposModel>> getRepos(String userName) async {
     final repoList = <ReposModel>[];
     final response = await dio.get('users/$userName/repos');
+    print("LENGHT REPOS IN SERVICE");
+    print(response.data);
     for (var element in response.data) {
       repoList.add(ReposModel.fromMap(element));
     }
@@ -48,6 +50,8 @@ class DataService {
 
       //Repos data
       final reposResponse = await getRepos(userName);
+      print('😃');
+      print(reposResponse.length);
 
       // //Commits data
       final reposEntityList = <ReposEntity>[];
@@ -68,8 +72,8 @@ class DataService {
       }
 
       //Join data
-      UserEntity userEntity =
-          UserEntity(userInfoEntity: userResponse.toEntity());
+      UserEntity userEntity = UserEntity(
+          userInfoEntity: userResponse.toEntity(), repos: reposEntityList);
 
       return ResponseModel(
           response: DataEntity(userEntity: userEntity), error: null);

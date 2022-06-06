@@ -1,3 +1,4 @@
+import 'package:github_gap/src/core/domain/entities/repos_entity.dart';
 import 'package:github_gap/src/features/commits/presentation/pages/commits_page.dart';
 import 'package:github_gap/src/features/home/presentation/pages/home_page.dart';
 import 'package:github_gap/src/features/repos/presentation/pages/repos_page.dart';

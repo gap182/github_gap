@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:github_gap/generated/l10n.dart';
 import 'package:github_gap/src/core/app_values/app_values.dart';
 import 'package:github_gap/src/core/dependencies/dependencies.dart';
+import 'package:github_gap/src/core/utils/common_appbar.dart';
 import 'package:github_gap/src/core/utils/error_dialog.dart';
 import 'package:github_gap/src/core/widgets/custom_loading.dart';
 import 'package:github_gap/src/features/home/presentation/state/home_state.dart';
@@ -47,16 +48,7 @@ class HomePage extends ConsumerWidget {
         children: [
           Scaffold(
             backgroundColor: Colors.transparent,
-            appBar: AppBar(
-              shadowColor: UIColors.secondaryColor,
-              toolbarHeight: 70.h,
-              centerTitle: true,
-              title: Image.asset(
-                Assets.catProgrammer,
-                height: 60.h,
-                width: 60.h,
-              ),
-            ),
+            appBar: commonAppbar(context, false),
             body: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
               child: LayoutBuilder(builder: (context, constraints) {

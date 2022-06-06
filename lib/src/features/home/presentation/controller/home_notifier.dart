@@ -19,6 +19,8 @@ class HomeNotifier extends StateNotifier<HomeState> {
       final response = await repository.getData(state.textToSearch!);
 
       if (response.response != null && response.error == null) {
+        print('REPO LENGHT');
+        print(response.response?.userEntity?.repos.length);
         ref.read(reposProvider.notifier).updateData(response.response);
         state = state.copyWith(homeStatus: HomeStatus.done);
       } else {

@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:github_gap/src/core/domain/entities/data_entity.dart';
+import 'package:github_gap/src/core/domain/entities/repos_entity.dart';
 import 'package:github_gap/src/features/repos/presentation/state/repos_state.dart';
 
 class ReposNotifier extends StateNotifier<ReposState> {
@@ -9,5 +10,9 @@ class ReposNotifier extends StateNotifier<ReposState> {
     state = state.copyWith(
       dataEntity: () => dataEntity,
     );
+  }
+
+  void changeSelectedRepo(ReposEntity? reposEntity) {
+    state = state.copyWith(selectedRepo: () => reposEntity);
   }
 }

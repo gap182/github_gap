@@ -5,7 +5,6 @@ final homeProvider = StateNotifierProvider<HomeNotifier, HomeState>((ref) {
   return HomeNotifier(repository: repository, ref: ref);
 });
 
-final reposProvider =
-    StateNotifierProvider.autoDispose<ReposNotifier, ReposState>((ref) {
+final reposProvider = StateNotifierProvider<ReposNotifier, ReposState>((ref) {
   return ReposNotifier();
 });
