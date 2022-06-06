@@ -9,6 +9,8 @@ import 'package:github_gap/src/core/data/services/data_service.dart';
 import 'package:github_gap/src/core/domain/repositories/data_repository.dart';
 import 'package:github_gap/src/features/home/presentation/controller/home_notifier.dart';
 import 'package:github_gap/src/features/home/presentation/state/home_state.dart';
+import 'package:github_gap/src/features/repos/presentation/controller/repos_notifier.dart';
+import 'package:github_gap/src/features/repos/presentation/state/repos_state.dart';
 
 part 'dependencies_ui.dart';
 part 'dependencies_domain.dart';

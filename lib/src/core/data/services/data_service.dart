@@ -76,6 +76,7 @@ class DataService {
       return ResponseModel(
           response: DataEntity(userEntity: userEntity), error: null);
     } on DioError catch (e) {
+      print(e.response);
       if (e.error == SocketException) {
         return ResponseModel(
           response: null,
