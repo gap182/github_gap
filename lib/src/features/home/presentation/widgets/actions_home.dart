@@ -22,7 +22,7 @@ class ActionsHome extends ConsumerWidget {
           onPressed: () async {
             await ref.read(homeProvider.notifier).loadThisRepoData();
             // ignore: use_build_context_synchronously
-            context.go('/home/commits');
+            context.go('/home/commits', extra: 0);
           },
         ),
         SizedBox(height: 20.h),

@@ -23,7 +23,6 @@ class CommitsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print(indexTag);
     final reposEntity =
         ref.watch(reposProvider.select((value) => value.selectedRepo));
 

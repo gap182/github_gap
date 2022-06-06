@@ -47,6 +47,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
@@ -90,3 +91,8 @@ flutter_intl:
   enabled: true
   main_locale: en
   class_name: S
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/general/cat_programmer.png"
