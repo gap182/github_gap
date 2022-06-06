@@ -1,5 +1,5 @@
 
-# Pokemon_test
+# GithubGAP 
 
 A Github app made with Flutter using the next packages:
 
@@ -23,7 +23,7 @@ Some of the skills worked on this project:
 
 ## Instructions to install the App
 
-To use a pre compiled demo of the app, you could use this apk release file on an Android device: https://drive.google.com/file/d/1pH0vLNwFsYDfVpgnInEqBqlvxSI37Ydh/view?usp=sharing
+To use a pre compiled demo of the app, you could use this apk release file on an Android device: https://drive.google.com/file/d/10P8d32ZTTaAhZbQOqnRbcEzSUKaQNY8f/view?usp=sharing
 
 To run the app, you have to take into account the next requisites and steps:
 
@@ -34,6 +34,15 @@ To run the app, you have to take into account the next requisites and steps:
 	Android: https://www.geeksforgeeks.org/how-to-install-flutter-app-on-android/#:~:text=Using%20a%20USB%20cable%2C%20plug,recognizes%20your%20connected%20Android%20device.
 	iOS: https://medium.com/front-end-weekly/how-to-test-your-flutter-ios-app-on-your-ios-device-75924bfd75a8
 * Inside the folder of the repository, run "flutter clean", then "flutter pub get".
-* Inside the folder of the repository, run "flutter run".
+* You will need a Github Token to be able to use the api without restrictions (info about to create a token: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+* Inside the folder of the repository, run "flutter run --dart-define=token=[YOUR GITHUB TOKEN]".
 
 ## Use of the App
+
+* Home Screen: You can choose either search for a Github username and watch all the public repositories and commits, or try the app watching the commits for this app.
+*![alt text](https://drive.google.com/uc?export=view&id=1krqph6ok00B4o7HwZqy_VGWHEBWSQT6u)
+*Repositories Screen: You can watch all the public repositories for the username selected, pressing the photo, you will be redirected to his github profile page.
+![alt text](https://drive.google.com/uc?export=view&id=1el7IDEAiEpNUvbYyq0L8t0ZFAFPt-1eN) 
+![alt text](https://drive.google.com/uc?export=view&id=1aRsHddkoQM0pe0ckOPH5TWmbx0zN9-h0)
+* Commits Screen: You can watch all the commits for a repository selected.
+* ![alt text](https://drive.google.com/uc?export=view&id=1SAjdByqiDx1ixVUB3mmkiGtyPkH6-DDN)
