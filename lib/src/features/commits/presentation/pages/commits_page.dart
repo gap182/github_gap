@@ -7,6 +7,10 @@ import 'package:github_gap/src/core/domain/entities/repos_entity.dart';
 import 'package:github_gap/src/core/theme/theme.dart';
 import 'package:github_gap/src/core/utils/common_appbar.dart';
 import 'package:github_gap/src/core/utils/common_extension.dart';
+import 'package:github_gap/src/core/widgets/custom_loading.dart';
+import 'package:github_gap/src/features/commits/presentation/widgets/commit_card.dart';
+import 'package:github_gap/src/features/home/presentation/state/home_state.dart';
+import 'package:github_gap/src/features/repos/presentation/state/repos_state.dart';
 import 'package:github_gap/src/features/repos/presentation/widgets/repo_card.dart';
 
 class CommitsPage extends ConsumerWidget {
@@ -18,57 +22,55 @@ class CommitsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final reposEntity =
         ref.watch(reposProvider.select((value) => value.selectedRepo));
-    return Scaffold(
-      appBar: commonAppbar(context, true),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          children: [
-            RepoCard(
-              name: reposEntity?.reposInfoEntity.name,
-              description: reposEntity?.reposInfoEntity.description,
-              createdAt: reposEntity?.reposInfoEntity.createdAt.format(),
+
+    final repoStatus =
+        ref.watch(reposProvider.select((value) => value.reposStatus));
+    return Stack(
+      children: [
+        Scaffold(
+          appBar: commonAppbar(context, true),
+          floatingActionButton: FloatingActionButton(
+            child: const Icon(
+              Icons.cloud_sync,
+              color: UIColors.primaryColor,
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: reposEntity?.commits.length,
-                itemBuilder: (context, index) {
-                  return SingleChildScrollView(
-                    child: Container(
-                      height: 150.h,
-                      width: double.infinity,
-                      margin: EdgeInsets.symmetric(vertical: 10.h),
-                      padding: EdgeInsets.symmetric(
-                          vertical: 10.h, horizontal: 10.w),
-                      decoration: BoxDecoration(
-                        color: UIColors.primaryColor.withOpacity(0.6),
-                        borderRadius: borderRadiusMedium,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text("Sha: ${reposEntity?.commits[index].sha}",
-                              style: Theme.of(context).textTheme.bodySmall),
-                          Text(
-                              "Commiter: ${reposEntity?.commits[index].commit.committer?.name}",
-                              style: Theme.of(context).textTheme.bodySmall),
-                          Text(
-                              "Date: ${reposEntity?.commits[index].commit.committer?.date?.hourFormat()}",
-                              style: Theme.of(context).textTheme.bodySmall),
-                          Text(
-                              "Message: ${reposEntity?.commits[index].commit.message}",
-                              style: Theme.of(context).textTheme.bodySmall),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
+            onPressed: () {
+              ref.read(reposProvider.notifier).reloadCommits();
+            },
+          ),
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Column(
+              children: [
+                RepoCard(
+                  name: reposEntity?.reposInfoEntity.name,
+                  description: reposEntity?.reposInfoEntity.description,
+                  createdAt: reposEntity?.reposInfoEntity.createdAt.format(),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: reposEntity?.commits.length,
+                    itemBuilder: (context, index) {
+                      return SingleChildScrollView(
+                        child: CommitCard(
+                          sha: reposEntity?.commits[index].sha,
+                          commiter: reposEntity
+                              ?.commits[index].commit.committer?.name,
+                          date: reposEntity
+                              ?.commits[index].commit.committer?.date
+                              ?.hourFormat(),
+                          message: reposEntity?.commits[index].commit.message,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
+        if (repoStatus == ReposStatus.loading) const CustomLoading()
+      ],
     );
   }
 }

@@ -12,7 +12,7 @@ class HomeNotifier extends StateNotifier<HomeState> {
   final DataRepository repository;
   final Ref ref;
 
-  void loadUserData() async {
+  Future<void> loadUserData() async {
     state = state.copyWith(homeStatus: HomeStatus.loading);
 
     if (state.textToSearch != null) {

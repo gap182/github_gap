@@ -6,5 +6,6 @@ final homeProvider = StateNotifierProvider<HomeNotifier, HomeState>((ref) {
 });
 
 final reposProvider = StateNotifierProvider<ReposNotifier, ReposState>((ref) {
-  return ReposNotifier();
+  final repository = ref.watch(dataRepositoryProvider);
+  return ReposNotifier(repository: repository, ref: ref);
 });

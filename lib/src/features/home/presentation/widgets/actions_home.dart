@@ -32,8 +32,8 @@ class ActionsHome extends ConsumerWidget {
               hintText: S.of(context).searchAGithubUser,
               onChanged: ref.read(homeProvider.notifier).changeTextToSearch,
               action: (textToSearch != null && textToSearch.isNotEmpty)
-                  ? () {
-                      ref.read(homeProvider.notifier).loadUserData();
+                  ? () async {
+                      await ref.read(homeProvider.notifier).loadUserData();
                     }
                   : null,
               showAction: true,
