@@ -60,10 +60,10 @@ class S {
     );
   }
 
-  /// `Try it with with this app's repository`
+  /// `This app's repository`
   String get tryItWithThisApp {
     return Intl.message(
-      'Try it with with this app\'s repository',
+      'This app\'s repository',
       name: 'tryItWithThisApp',
       desc: '',
       args: [],

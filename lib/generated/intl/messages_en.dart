@@ -38,8 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Search a Github username"),
         "serverError": MessageLookupByLibrary.simpleMessage(
             "It looks like the server is not workig well right now, please try again later"),
-        "tryItWithThisApp": MessageLookupByLibrary.simpleMessage(
-            "Try it with with this app\'s repository"),
+        "tryItWithThisApp":
+            MessageLookupByLibrary.simpleMessage("This app\'s repository"),
         "userNotFoundError": MessageLookupByLibrary.simpleMessage(
             "It looks like the user that you are looking for, doesn\'t exist, please try again")
       };
