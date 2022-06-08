@@ -42,7 +42,7 @@ To run the app, you have to take into account the next requisites and steps:
 * Home Screen: You can choose either search for a Github username and watch all the public repositories and commits, or try the app watching the commits for this app.
 ![alt text](https://drive.google.com/uc?export=view&id=1krqph6ok00B4o7HwZqy_VGWHEBWSQT6u)
 
-*Repositories Screen: You can watch all the public repositories for the username selected, pressing the photo, you will be redirected to his github profile page.
+* Repositories Screen: You can watch all the public repositories for the username selected, pressing the photo, you will be redirected to his github profile page.
 
 ![alt text](https://drive.google.com/uc?export=view&id=1el7IDEAiEpNUvbYyq0L8t0ZFAFPt-1eN) 
 
